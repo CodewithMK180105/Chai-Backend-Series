@@ -17,6 +17,13 @@ app.use(express.urlencoded({
 app.use(express.static("public"))
 app.use(cookieParser());;
 
+// Routes Import
+import userRouter from "./routes/user.routes.js";
+
+// Routes Declaration
+app.use("/api/v1/users", userRouter);
+// https://localhost:8000/api/v1/users/register
+
 app.on("error", (error)=>{
     console.log("Error: ",error);
     throw error;
