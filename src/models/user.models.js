@@ -51,7 +51,7 @@ const userSchema= new mongoose.Schema({
 userSchema.pre("save", async function(next){  // Note: Don't use arrow function here, bcoz it don't have the access of the 'this' keyword
     if(!this.isModified("password")) return next();
 
-    this.password=bcrypt.hash(this.password, 10)
+    this.password=await bcrypt.hash(this.password, 10)
     next();
 })
 
